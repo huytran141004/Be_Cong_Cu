@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer("doi_tuong")->comment("0:trẻ em, 1:người lớn, 2:sinh viên");
             $table->double("gia_ban");
             $table->double("gia_khuyen_mai");
+            $table->integer("so_luong");
             $table->integer("is_thanh_toan")->comment("0:chưa thanh toán, 1:đã thanh toán");
             $table->timestamps();
         });

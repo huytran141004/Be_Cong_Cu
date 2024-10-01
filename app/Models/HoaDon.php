@@ -17,6 +17,7 @@ class HoaDon extends Model
         "doi_tuong",
         "gia_ban",
         "gia_khuyen_mai",
+        "so_luong",
         "is_thanh_toan",
     ];
 }
