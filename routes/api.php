@@ -16,3 +16,4 @@ Route::post("/admin/them-ve", [AdminController::class, "themVe"]);
 Route::post("/admin/xoa-ve", [AdminController::class, "xoaVe"]);
 Route::post("/admin/update-ve", [AdminController::class, "updateVe"]);
 Route::post("/khach-hang/thanh-toan", [HoaDonController::class, "thanhToan"]);
+Route::post("/khach-hang/chi-tiet-hoa-don", [HoaDonController::class, "chiTietHoaDon"]);

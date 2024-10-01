@@ -11,7 +11,7 @@ class HoaDonController extends Controller
 {
     public function thanhToan(Request $request){
         $khachhang = Auth::guard('sanctum')->user();
-        $ve = Ve::find($request->id_ve)->first();
+        $ve = Ve::where("id", $request->id_ve)->first();
         if($ve){
            HoaDon::create([
             "id_ve"         =>$ve->id,
@@ -32,6 +32,24 @@ class HoaDonController extends Controller
             return response()->json([
                 "status"    => false,
                 "message"   => "Thanh toán thất bại"
+            ]);
+        }
+    }
+    public function chitietHoaDon(Request $request){
+        $ve = HoaDon::join('khach_hangs', 'hoa_dons.id_khach_hang', 'khach_hangs.id')
+                    ->where("id_ve", $request->id)
+                    ->select('hoa_dons.*','khach_hangs.username')
+                    ->first();
+        if($ve){
+            return response()->json([
+                "status"        => true,
+                "data"          => $ve,
+            ]);
+        }
+        else{
+            return response()->json([
+                "status"    => false,
+                "message"   => "Không có hóa đơn này"
             ]);
         }
     }
